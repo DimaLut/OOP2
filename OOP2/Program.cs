@@ -22,7 +22,7 @@ namespace ООП
             dataBase.ShowPLayer();
             dataBase.BanPlayer(2);
             dataBase.ShowPLayer();
-            dataBase.UnbanPlayers(3);
+            dataBase.UnbanPlayer(3);
             dataBase.ShowPLayer();
         }
     }
@@ -35,22 +35,20 @@ namespace ООП
         {
             players = new List<Player>();
         }
-
         public void AddPlayer(int number, string name, int level)
         {
-            Player sounghtPlayer = players.FirstOrDefault(x => x.Number == x.Number);
+            Player player = players.FirstOrDefault(x => x.Number == x.Number);
 
-            if (sounghtPlayer == null)
+            if (player == null)
             {
-                Player player1 = new Player(number, name, level);
-
+                Player creatPlayers = new Player(number, name, level);
+                players.Add(player);
             }
             else
             {
                 Console.WriteLine("Нельзя выполнить данное действие. Попробуйте еще раз.");
             }
         }
-
         public void BanPlayer(int number)
         {
             Player player = players.FirstOrDefault(x => x.Number == number);
@@ -61,8 +59,7 @@ namespace ООП
             }
             Console.WriteLine("Нельзя выполнить данное действие. Попробуйте еще раз.");
         }
-
-        public void UnbanPlayers(int number)
+        public void UnbanPlayer(int number)
         {
             Player player = players.FirstOrDefault(x => x.Number == number);
 
@@ -72,7 +69,6 @@ namespace ООП
             }
 
         }
-
         public void RemovePlayer(int number)
         {
             Player player = players.FirstOrDefault(x => x.Number == number);
@@ -86,7 +82,6 @@ namespace ООП
                 Console.WriteLine("Нельзя выполнить данное действие. Попробуйте еще раз.");
             }
         }
-
         public void ShowPLayer()
         {
             Console.WriteLine("Start");
@@ -116,7 +111,6 @@ namespace ООП
             Level = level;
             IsBanned = isBanned;
         }
-
         public Player(int number, string name, int level)
         {
             Number = number;
@@ -124,18 +118,15 @@ namespace ООП
             Level = level;
             IsBanned = false;
         }
-
         public void Ban()
         {
             IsBanned = true;
         }
-
         public void Unban()
         {
             IsBanned = false;
         }
-
-        public void GetInformation()
+        public void ShowInformation()
         {
             Console.WriteLine(Name + IsBanned + Number);
         }
