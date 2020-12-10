@@ -26,20 +26,20 @@ namespace ООП
 
     class DataBase
     {
-        private List<Player> players { get; set;}
+        private List<Player> _players { get; set;}
 
         public DataBase()
         {
-            players = new List<Player>();
+            _players = new List<Player>();
         }
         public void AddPlayer(int number, string name, int level)
         {
-            Player player = players.FirstOrDefault(x => x.Number == x.Number);
+            Player player = _players.FirstOrDefault(x => x.Number == x.Number);
 
             if (player == null)
             {
                 Player creatPlayers = new Player(number, name, level);
-                players.Add(player);
+                _players.Add(player);
             }
             else
             {
@@ -48,17 +48,20 @@ namespace ООП
         }
         public void BanPlayer(int number)
         {
-            Player player = players.FirstOrDefault(x => x.Number == number);
+            Player player = _players.FirstOrDefault(x => x.Number == number);
 
             if (player != null)
             {
                 player.Ban();
             }
-         
+            else
+            {
+                Console.WriteLine("Нельзя выполнить данное действие. Попробуйте еще раз.");
+            }
         }
         public void UnbanPlayer(int number)
         {
-            Player player = players.FirstOrDefault(x => x.Number == number);
+            Player player = _players.FirstOrDefault(x => x.Number == number);
 
             if (player != null)
             {
@@ -71,11 +74,11 @@ namespace ООП
         }
         public void RemovePlayer(int number)
         {
-            Player player = players.FirstOrDefault(x => x.Number == number);
+            Player player = _players.FirstOrDefault(x => x.Number == number);
 
             if (player != null)
             {
-                players.Remove(player);
+                _players.Remove(player);
             }
             else
             {
@@ -86,7 +89,7 @@ namespace ООП
         {
             Console.WriteLine("Start");
 
-            players.ForEach(x =>
+            _players.ForEach(x =>
             {
                 Console.WriteLine(x.Name + x.IsBanned + x.Number);
             });
