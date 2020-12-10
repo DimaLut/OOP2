@@ -15,35 +15,43 @@ namespace ООП
             dataBase.AddPlayer(1, "Mike", 2);
             dataBase.AddPlayer(2, "Bob", 3);
             dataBase.AddPlayer(3, "Rob", 5);
-            dataBase.ShowPLayers();
+            dataBase.ShowPLayer();
             
 
-            dataBase.RemovePlayers(1);
-            dataBase.ShowPLayers();
-            dataBase.BanPlayers(2);
-            dataBase.ShowPLayers();
+            dataBase.RemovePlayer(1);
+            dataBase.ShowPLayer();
+            dataBase.BanPlayer(2);
+            dataBase.ShowPLayer();
             dataBase.UnbanPlayers(3);
-            dataBase.ShowPLayers();
+            dataBase.ShowPLayer();
         }
     }
 
     class DataBase
     {
-        private readonly List<Player> players = new List<Player>();
-      
+        public List<Player> players {private get; set;}
+
+        public DataBase()
+        {
+            players = new List<Player>();
+        }
+
         public void AddPlayer(int number, string name, int level)
         {
             Player sounghtPlayer = players.FirstOrDefault(x => x.Number == x.Number);
 
             if (sounghtPlayer == null)
             {
-                Player player1 = new Player(1, "Mike", 2);
-                Player player2 = new Player(2, "Bob", 3);
-                Player player3 = new Player(3, "Rob", 5, true);
+                Player player1 = new Player(number, name, level);
+
+            }
+            else
+            {
+                Console.WriteLine("Нельзя выполнить данное действие. Попробуйте еще раз.");
             }
         }
 
-        public void BanPlayers(int number)
+        public void BanPlayer(int number)
         {
             Player player = players.FirstOrDefault(x => x.Number == number);
 
@@ -51,6 +59,7 @@ namespace ООП
             {
                 player.Ban();
             }
+            Console.WriteLine("Нельзя выполнить данное действие. Попробуйте еще раз.");
         }
 
         public void UnbanPlayers(int number)
@@ -64,7 +73,7 @@ namespace ООП
 
         }
 
-        public void RemovePlayers(int number)
+        public void RemovePlayer(int number)
         {
             Player player = players.FirstOrDefault(x => x.Number == number);
 
@@ -78,7 +87,7 @@ namespace ООП
             }
         }
 
-        public void ShowPLayers()
+        public void ShowPLayer()
         {
             Console.WriteLine("Start");
 
@@ -126,7 +135,7 @@ namespace ООП
             IsBanned = false;
         }
 
-        public void Information()
+        public void GetInformation()
         {
             Console.WriteLine(Name + IsBanned + Number);
         }
