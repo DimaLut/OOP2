@@ -8,28 +8,25 @@ namespace ООП
     {
         static void Main(string[] args)
         {
-       
-            
 
             DataBase dataBase = new DataBase();
             dataBase.AddPlayer(1, "Mike", 2);
             dataBase.AddPlayer(2, "Bob", 3);
             dataBase.AddPlayer(3, "Rob", 5);
-            dataBase.ShowPLayer();
+            dataBase.ShowPLayers();
             
-
             dataBase.RemovePlayer(1);
-            dataBase.ShowPLayer();
+            dataBase.ShowPLayers();
             dataBase.BanPlayer(2);
-            dataBase.ShowPLayer();
+            dataBase.ShowPLayers();
             dataBase.UnbanPlayer(3);
-            dataBase.ShowPLayer();
+            dataBase.ShowPLayers();
         }
     }
 
     class DataBase
     {
-        public List<Player> players {private get; set;}
+        private List<Player> players { get; set;}
 
         public DataBase()
         {
@@ -57,7 +54,7 @@ namespace ООП
             {
                 player.Ban();
             }
-            Console.WriteLine("Нельзя выполнить данное действие. Попробуйте еще раз.");
+         
         }
         public void UnbanPlayer(int number)
         {
@@ -67,7 +64,10 @@ namespace ООП
             {
                 player.Unban();
             }
-
+            else
+            {
+                Console.WriteLine("Нельзя выполнить данное действие. Попробуйте еще раз.");
+            }
         }
         public void RemovePlayer(int number)
         {
@@ -82,7 +82,7 @@ namespace ООП
                 Console.WriteLine("Нельзя выполнить данное действие. Попробуйте еще раз.");
             }
         }
-        public void ShowPLayer()
+        public void ShowPLayers()
         {
             Console.WriteLine("Start");
 
