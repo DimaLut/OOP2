@@ -26,7 +26,7 @@ namespace ООП
 
     class DataBase
     {
-        private List<Player> _players { get; set;}
+        private List<Player> _players;
 
         public DataBase()
         {
